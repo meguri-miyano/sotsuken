@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>メニュー登録</title>
+</head>
+<body>
+  <div class="navbar">
+    <a href="/">トップページへ</a>
+  </div>
+  <h1>メニュー登録画面</h1>
+  
+  <button type=“button” onclick="location.href='/menulist/'">メニュー一覧</button>
+  <button type=“button” onclick="location.href='/menulist/'">保存してメニュー一覧へ</button>
+
+  <form action="{% url 'menu:menuindex' %}" method="POST">
+    {{ form.as_p}}
+    {% csrf_token %}
+    <input type="submit" value="登録">
+  </form>
+</body>
+</html>
