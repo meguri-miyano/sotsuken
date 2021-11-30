@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
+  {% bootstrap_css %}
+  {% load static %}
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,18 +9,24 @@
   <title>メニュー登録</title>
 </head>
 <body>
-  <div class="navbar">
-    <a href="/">トップページへ</a>
+  <div class="container">
+    <div class="row">
+      <div class="my-div-style">
+        <h1>メニュー登録</h1>
+        <form method="post">
+          {% csrf_token %}
+          <table class="table">
+            {{form.as_table}}
+          </table>
+          <div class="offset-sm4 col-sm-8">
+            <button class="btn btn-primary" type="submit">登録</button>
+          </div>
+        </form>  
+        <div class="offset-sm4 col-sm-8">
+          <button class="btn btn-primary" type=“button” onclick="location.href='/menulist/'">メニュー一覧へ</button>
+        </div>     
+      </div>
+    </div>
   </div>
-  <h1>メニュー登録画面</h1>
-  
-  <button type=“button” onclick="location.href='/menulist/'">メニュー一覧</button>
-  <button type=“button” onclick="location.href='/menulist/'">保存してメニュー一覧へ</button>
-
-  <form action="{% url 'menu:menuindex' %}" method="POST">
-    {{ form.as_p}}
-    {% csrf_token %}
-    <input type="submit" value="登録">
-  </form>
 </body>
 </html>
